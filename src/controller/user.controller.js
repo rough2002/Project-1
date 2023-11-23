@@ -7,7 +7,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 /*
 -get user details
--upload
+-validation
 
 */
 
