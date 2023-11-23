@@ -10,10 +10,11 @@ dotenv.config({
 
 connectDB()
   .then(() =>
-    app.listen(process.env.PORT || 8000, () => {
+    app.listen(process.env.PORT || 8000, (req, res) => {
       console.log(`Server is running at port : ${process.env.PORT}`);
     })
   )
   .catch((err) => {
     console.log("Mongo db connection failed!!!", err);
   });
+console.log(process.env.ACCESS_TOKEN_SECRET);

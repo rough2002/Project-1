@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
-
+console.log(process.env.PASSWORD);
 const dbString = process.env.MONGODB_URI.replace(
   "<password>",
   process.env.PASSWORD
