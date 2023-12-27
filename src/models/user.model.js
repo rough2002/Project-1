@@ -1,12 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
   {
     username: {
       type: String,
-      rqeuired: true,
+      required: true,
       unique: true,
       lowercase: true,
       trim: true,
@@ -14,14 +15,14 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      rqeuired: true,
+      required: true,
       unique: true,
       lowercase: true,
       trim: true,
     },
     fullName: {
       type: String,
-      rqeuired: true,
+      required: true,
       trim: true,
       index: true,
     },
@@ -73,7 +74,7 @@ userSchema.methods.generateAccessToken = function () {
     }
   );
 };
-userSchema.methods.generateAccessToken = function () {
+userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
       _id: this._id,
